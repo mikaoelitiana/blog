@@ -1,6 +1,5 @@
-
-
-import React from "react"
+import React from 'react'
+import Link from 'gatsby-link'
 
 export default ({ data }) => {
   console.log(data)
@@ -8,8 +7,16 @@ export default ({ data }) => {
     <div>
       {data.allWordpressPost.edges.map(({ node }) => (
         <div>
-          <h4>{node.title}</h4>
-          <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          <Link
+            to={node.slug}
+            style={{
+              textDecoration: "none",
+              color: "inherit"
+            }}
+          >
+            <h4 dangerouslySetInnerHTML={{ __html: node.title }} />
+            <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          </Link>
         </div>
       ))}
     </div>
@@ -17,7 +24,7 @@ export default ({ data }) => {
 }
 
 export const pageQuery = graphql`
-  query GetPosts{
+  query GetPosts {
     allWordpressPost(sort: { fields: [date], order: DESC }) {
       edges {
         node {
@@ -29,4 +36,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
