@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-export default ({ data }) => {
-  console.log(data)
+export default ({ pathContext }) => {
+  const { group, index, first, last } = pathContext
   return (
     <div>
-      {data.allWordpressPost.edges.map(({ node }) => (
+      {group.map(({ node }) => (
         <div>
           <Link
             to={node.slug}
@@ -22,23 +22,17 @@ export default ({ data }) => {
           </Link>
         </div>
       ))}
+
+      {!first && (
+        <Link className="prev" to={`/${index > 2 ? index - 1 : ''}`}>
+          &larr; Previous
+        </Link>
+      )}
+      {!last && (
+        <Link className="next" to={`/${index + 1}`}>
+          Next &rarr;
+        </Link>
+      )}
     </div>
   )
 }
-
-export const pageQuery = graphql`
-  query GetPosts {
-    allWordpressPost(sort: { fields: [date], order: DESC }) {
-      edges {
-        node {
-          title
-          excerpt
-          slug
-          featured_media {
-            source_url
-          }
-        }
-      }
-    }
-  }
-`
