@@ -10,11 +10,14 @@ export default ({ data }) => {
           <Link
             to={node.slug}
             style={{
-              textDecoration: "none",
-              color: "inherit"
+              textDecoration: 'none',
+              color: 'inherit',
             }}
           >
-            <h4 dangerouslySetInnerHTML={{ __html: node.title }} />
+            <h3 dangerouslySetInnerHTML={{ __html: node.title }} />
+            {/* {node.featured_media && (
+              <img src={node.featured_media.source_url} alt="featured image" />
+            )} */}
             <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
           </Link>
         </div>
@@ -31,6 +34,9 @@ export const pageQuery = graphql`
           title
           excerpt
           slug
+          featured_media {
+            source_url
+          }
         }
       }
     }

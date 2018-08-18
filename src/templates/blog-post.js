@@ -5,7 +5,7 @@ export default ({ data }) => {
   return (
     <div>
       <h1 dangerouslySetInnerHTML={{ __html: post.title }} />
-      {post.featured_media.source_url && <img src={post.featured_media.source_url} alt="featured image"/>}
+      {post.featured_media && <img src={post.featured_media.source_url} alt="featured image"/>}
       <div dangerouslySetInnerHTML={{ __html: post.content }} />
     </div>
   )
