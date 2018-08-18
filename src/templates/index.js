@@ -22,17 +22,23 @@ export default ({ pathContext }) => {
           </Link>
         </div>
       ))}
-
-      {!first && (
-        <Link className="prev" to={`/${index > 2 ? index - 1 : ''}`}>
-          &larr; Previous
-        </Link>
-      )}
-      {!last && (
-        <Link className="next" to={`/${index + 1}`}>
-          Next &rarr;
-        </Link>
-      )}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        {!first && (
+          <Link className="prev" to={`/${index > 2 ? index - 1 : ''}`}>
+            &larr; Previous
+          </Link>
+        )}
+        {!last && (
+          <Link className="next" to={`/${index + 1}`}>
+            Next &rarr;
+          </Link>
+        )}
+      </div>
     </div>
   )
 }
