@@ -19,7 +19,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               excerpt
               slug
               featured_media {
-                source_url
+                localFile {
+                  childImageSharp {
+                    resolutions(width: 250, height: 250) {
+                      src
+                    }
+                  }
+                }
               }
             }
           }
