@@ -91,7 +91,7 @@ stage('Test') {
 
 ## Préparation de Jenkins
 
-Du côté de Jenkins, nous allons utiliser un plugin qui s'appelle _Cobertura Plugin_ qu'il faut installer et activer dans l'administration ![](./Capture-d’écran-2018-06-19-à-13.41.00.png) Une fois que le plugin est activé, nous allons ajouter une nouvelle étape dans le fichier _Jenkinsfile_ :
+Du côté de Jenkins, nous allons utiliser un plugin qui s'appelle _Cobertura Plugin_ qu'il faut installer et activer dans l'administration ![](./Capture-d-ecran-2018-06-19-à-13.41.00.png) Une fois que le plugin est activé, nous allons ajouter une nouvelle étape dans le fichier _Jenkinsfile_ :
 ```
 stage('Publish Code QA') {
             steps {
@@ -100,11 +100,11 @@ stage('Publish Code QA') {
             }
         }
 ```
-Pour obtenir ce code, vous pouvez vous rendre à l'adresse /pipeline-syntax/ de votre projet Jenkins (par exemple http://jenkins.local/job/MobileApp/pipeline-syntax/). Un formulaire s'affiche et vous devez choisir **c**<span style="message-body-wrapper"><span style="message-flex-body"><span style="message-body devtools-monospace"><span style="objectBox objectBox-string">**obertura: Publish Cobertura Coverage**</span></span></span></span> <span style="message-body-wrapper"><span style="message-flex-body"><span style="message-body devtools-monospace"><span style="objectBox objectBox-string">**Report**</span></span></span></span> <span style="message-body-wrapper"><span style="message-flex-body"><span style="message-body devtools-monospace"><span style="objectBox objectBox-string">avant de préciser le chemin du fichier XML. Quand vous validez ce formulaire, le code correspondant sera affiché dans le champ texte en dessous :</span></span></span></span> ![](./Capture-d’écran-2018-06-19-à-13.46.36-1024x500.png)
+Pour obtenir ce code, vous pouvez vous rendre à l'adresse /pipeline-syntax/ de votre projet Jenkins (par exemple http://jenkins.local/job/MobileApp/pipeline-syntax/). Un formulaire s'affiche et vous devez choisir **c**<span style="message-body-wrapper"><span style="message-flex-body"><span style="message-body devtools-monospace"><span style="objectBox objectBox-string">**obertura: Publish Cobertura Coverage**</span></span></span></span> <span style="message-body-wrapper"><span style="message-flex-body"><span style="message-body devtools-monospace"><span style="objectBox objectBox-string">**Report**</span></span></span></span> <span style="message-body-wrapper"><span style="message-flex-body"><span style="message-body devtools-monospace"><span style="objectBox objectBox-string">avant de préciser le chemin du fichier XML. Quand vous validez ce formulaire, le code correspondant sera affiché dans le champ texte en dessous :</span></span></span></span> ![](./Capture-d-ecran-2018-06-19-à-13.46.36-1024x500.png)
 
 ## Résultats
 
-Tout est maintenant prêt et à la fin d'un _job_ de Jenkins, vous aurez accès à un graphique dans la partie droite du _dashboard_ et un lien qui s'appelle **Coverage Report** vers le rapport HTML dans le menu à gauche. ![](./Capture-d’écran-2018-06-19-à-13.53.06-1024x425.png) Quand vous cliquez sur le lien _Coverage Report_, la page principale du rapport s'affiche et vous pourrez voir en détail chaque dossier et chaque fichier de votre projet pour voir le code qui est bien couvert et celui qui ne l'est pas. ![](./Capture-d’écran-2018-06-19-à-13.56.02-1024x503.png)
+Tout est maintenant prêt et à la fin d'un _job_ de Jenkins, vous aurez accès à un graphique dans la partie droite du _dashboard_ et un lien qui s'appelle **Coverage Report** vers le rapport HTML dans le menu à gauche. ![](./Capture-d-ecran-2018-06-19-à-13.53.06-1024x425.png) Quand vous cliquez sur le lien _Coverage Report_, la page principale du rapport s'affiche et vous pourrez voir en détail chaque dossier et chaque fichier de votre projet pour voir le code qui est bien couvert et celui qui ne l'est pas. ![](./Capture-d-ecran-2018-06-19-à-13.56.02-1024x503.png)
 
 ## Conclusion
 

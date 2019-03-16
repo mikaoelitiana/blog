@@ -68,10 +68,10 @@ deploy_app:
     - rancher --debug up -d --stack "our-app"
     - rancher --debug up -d --force-upgrade --pull --stack "our-app" --confirm-upgrade app
 ```
-The first line in <span style="lang:default decode:true crayon-inline ">script</span>  will check that a stack call "our-app" is up in Rancher, if not, it will first create it. The second command downloads (with option <span style="lang:default decode:true crayon-inline ">\--pull</span> ) the latest image built for <span style="lang:default decode:true crayon-inline ">app</span>  et update the stack (<span style="lang:default decode:true crayon-inline ">\--confirm-upgrade</span> ). Finally, we need to get Rancher credentials so the previous rancher command can connect to the correct instance. We get them from Rancher in _Rancher > API > Keys_ ![](./Capture-d’écran-2017-09-11-à-17.01.26-1024x155.png) We will put these informations in Gitlab and they will be passed as environment variable on each CI pipeline. We set them in Gitlab at _Settings > Pipelines > Secret variables _
+The first line in <span style="lang:default decode:true crayon-inline ">script</span>  will check that a stack call "our-app" is up in Rancher, if not, it will first create it. The second command downloads (with option <span style="lang:default decode:true crayon-inline ">\--pull</span> ) the latest image built for <span style="lang:default decode:true crayon-inline ">app</span>  et update the stack (<span style="lang:default decode:true crayon-inline ">\--confirm-upgrade</span> ). Finally, we need to get Rancher credentials so the previous rancher command can connect to the correct instance. We get them from Rancher in _Rancher > API > Keys_ ![](./Capture-d-ecran-2017-09-11-à-17.01.26-1024x155.png) We will put these informations in Gitlab and they will be passed as environment variable on each CI pipeline. We set them in Gitlab at _Settings > Pipelines > Secret variables _
 
 1.  RANCHER\_ACCESS\_KEY: the generated access key
 2.  RANCHER\_SECRET\_KEY: secret key associated
 3.  RANCHER\_URL: the URL of Rancher
 
-![](./Capture-d’écran-2017-09-11-à-17.04.40-1024x432.png) Et voila, our Rancher stack is now updated through Gitlab CI.
+![](./Capture-d-ecran-2017-09-11-à-17.04.40-1024x432.png) Et voila, our Rancher stack is now updated through Gitlab CI.

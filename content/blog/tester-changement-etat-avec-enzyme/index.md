@@ -72,4 +72,4 @@ it('should display bad text when expired', () => {
   expect(timer.text()).toBe('😭 It's too late to apologize.');
 });
 ```
-Maintenant, nos tests valident bien le changement d'état dans le composant sans trop de difficulté. ![](./Capture-d’écran-2018-04-24-à-15.05.43.png) N'hésitez pas à laisser un commentaire pour en discuter.
+Maintenant, nos tests valident bien le changement d'état dans le composant sans trop de difficulté. ![](./Capture-d-ecran-2018-04-24-à-15.05.43.png) N'hésitez pas à laisser un commentaire pour en discuter.
