@@ -50,7 +50,7 @@ Il faut essayer de passer le moins de paramètres possibles au composant et util
 
 Un exemple assez récurrent de paramètre qui change sans que ce soit nécessaire est l'utilisation de fonctions anonymes. Un des composants que j'ai identifié dans le _Flamegraph_ du Profiler utilisait les paramètres suivants :
 
-```
+```javascript
 <Header  
   onPressRight={() => navigation.openDrawer()}  
   onPressLeft={() => navigation.goBack()}  
@@ -63,7 +63,7 @@ Cela vient du fait que les fonctions anonymes utilisées en paramètres ne point
 
 Pour remédier à cela, nous allons définir une référence fixe à chaque fonction et la réutiliser.
 
-```
+```javascript
 // ...  
 function _openDrawer(){  
   navigation.openDrawer()  
@@ -84,7 +84,7 @@ Une autre amélioration simple à faire est **d'utiliser PureComponent**comme pa
 
 De ce fait, si un objet est passé en paramètre d'un composant, le rendu n'est pas effectué une seconde fois si les paramètres _en surface_ de l'objet n'ont pas changé.
 
-```
+```javascript
 <UserInfo user={{ name: "John Doe", age: 29, meta: { latestLogin:   
 "2019-01-01T22:00:01" } }} />  
   
@@ -93,7 +93,7 @@ De ce fait, si un objet est passé en paramètre d'un composant, le rendu n'est 
 
 Dans l'exemple ci-dessus, le changement de _latestLogin_ n'entraîne pas un nouveau rendu de ce composant si il étend PureComponent. Il faudra donc choisir d'utiliser ou non PureComponent en fonction du comportement attendu dans l'application.
 
-```
+```javascript
 class UserInfo extends React.PureComponent {  
 // ...  
 }  
