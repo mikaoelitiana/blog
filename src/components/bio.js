@@ -38,11 +38,12 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works Paris building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                Follow me on Twitter
-              </a>
+              Written by <strong>{author}</strong> who lives and works in Paris,
+              building useful things with React, Typescript and more.
+              {`Follow me on `}
+              <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+              {` or `}
+              <a href={`https://github.com/${social.github}`}>Github</a>
             </p>
           </div>
         )
