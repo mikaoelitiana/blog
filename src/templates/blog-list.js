@@ -11,12 +11,20 @@ class BlogIndex extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
+    const pageInfo = data.allMarkdownRemark.pageInfo
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          keywords={[
+            `blog`,
+            `typescript`,
+            `javascript`,
+            `react`,
+            "DevOps",
+            "Continuous integration",
+          ]}
         />
         <Bio />
         {posts.map(({ node }) => {
@@ -41,6 +49,27 @@ class BlogIndex extends React.Component {
             </div>
           )
         })}
+        <div style={{ height: "50px", width: "100%", position: "relative" }}>
+          {pageInfo.hasPreviousPage && (
+            <Link
+              to={`${
+                pageInfo.currentPager > 1 ? pageInfo.currentPage - 2 : ""
+              }`}
+            >
+              {" "}
+              ←{" "}
+            </Link>
+          )}
+          {pageInfo.hasNextPage && (
+            <Link
+              style={{ position: "absolute", right: 0 }}
+              to={`${pageInfo.currentPage}`}
+            >
+              {" "}
+              →{" "}
+            </Link>
+          )}
+        </div>
       </Layout>
     )
   }
@@ -49,7 +78,7 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query ($skip: Int!, $limit: Int!){
+  query($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -61,6 +90,11 @@ export const pageQuery = graphql`
       limit: $limit
       skip: $skip
     ) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        currentPage
+      }
       edges {
         node {
           excerpt
