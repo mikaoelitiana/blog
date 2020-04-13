@@ -16,7 +16,7 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title="All posts"
+          title="Blog posts"
           keywords={[
             `blog`,
             `typescript`,
@@ -52,7 +52,7 @@ class BlogIndex extends React.Component {
         <div style={{ height: "50px", width: "100%", position: "relative" }}>
           {pageInfo.hasPreviousPage && (
             <Link
-              to={`${
+              to={`/${
                 pageInfo.currentPager > 1 ? pageInfo.currentPage - 2 : ""
               }`}
             >
@@ -63,7 +63,7 @@ class BlogIndex extends React.Component {
           {pageInfo.hasNextPage && (
             <Link
               style={{ position: "absolute", right: 0 }}
-              to={`${pageInfo.currentPage}`}
+              to={`/${pageInfo.currentPage}`}
             >
               {" "}
               →{" "}
