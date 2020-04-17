@@ -3,7 +3,7 @@ module.exports = {
     title: `Mika A.`,
     author: `@mikaoelitiana`,
     description: `Blog simple.`,
-    siteUrl: `https://mikaoelitiana.name/`,
+    siteUrl: `https://mikaoelitiana.name`,
     social: {
       twitter: `mikaoelitiana`,
       github: `mikaoelitiana`,
@@ -43,6 +43,14 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-social-cards`,
+            options: {
+              meta: {
+                parts: ["- ", { field: "author" }],
+              },
+            },
+          },
         ],
       },
     },
