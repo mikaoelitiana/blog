@@ -53,7 +53,6 @@ function SEO({
           property: `og:title`,
           content: title,
         },
-        { property: `og:image`, content: imageUrl },
         {
           property: `og:description`,
           content: metaDescription,
@@ -61,10 +60,6 @@ function SEO({
         {
           property: `og:type`,
           content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
         },
         {
           name: `twitter:creator`,
@@ -78,11 +73,16 @@ function SEO({
           name: `twitter:description`,
           content: metaDescription,
         },
-        { name: "twitter:card", content: "summary_large_image" },
         {
-          name: "twitter:image",
-          content: `${site.siteMetadata.siteUrl}${slug}twitter-card.jpg`,
+          name: "twitter:card",
+          content: imageUrl ? "summary_large_image" : `summary`,
         },
+        imageUrl
+          ? { property: `og:image`, content: imageUrl }
+          : {
+              name: "twitter:image",
+              content: `${site.siteMetadata.siteUrl}${slug}twitter-card.jpg`,
+            },
       ]
         .concat(
           keywords.length > 0
