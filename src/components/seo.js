@@ -10,8 +10,6 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { constructUrl } from "../utils/url"
-
 function SEO({
   description,
   lang,
