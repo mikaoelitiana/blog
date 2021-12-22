@@ -140,5 +140,16 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: `gatsby-plugin-addsocialshare-share`,
+      options: {
+        id: ".ass_interface",
+        alignment_desktop: "right",
+        alignment_mobile: "bottom",
+        providers:
+          '{ facebook: "Facebook", linkedin: "Linkedin", twitter: "Twitter" }',
+        corners: "5%",
+      },
+    },
   ],
 }
