@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { constructUrl } from "../utils/url"
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -18,6 +19,11 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
           slug={slug}
+          imageUrl={constructUrl(
+            this.props.data.site.siteMetadata.siteUrl,
+            this.props.data.markdownRemark.frontmatter.image?.childImageSharp
+              ?.fixed?.src
+          )}
         />
         <h1>{post.frontmatter.title}</h1>
         <p
@@ -75,6 +81,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -84,6 +91,17 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        imageAlt
+        image {
+          childImageSharp {
+            fixed(height: 600, width: 1200) {
+              src
+            }
+            fluid(maxWidth: 700, maxHeight: 500) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

@@ -10,7 +10,26 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, keywords, title, slug }) {
+interface Props {
+  description: string
+  lang: string
+  meta: any[]
+  keywords: string[]
+  title: string
+  slug: string
+  imageUrl?: string | null
+  imageAlt?: string
+}
+
+function SEO({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  slug,
+  imageUrl,
+}: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -53,10 +72,6 @@ function SEO({ description, lang, meta, keywords, title, slug }) {
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
           name: `twitter:creator`,
           content: site.siteMetadata.author,
         },
@@ -68,11 +83,16 @@ function SEO({ description, lang, meta, keywords, title, slug }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-        { name: "twitter:card", content: "summary_large_image" },
         {
-          name: "twitter:image",
-          content: `${site.siteMetadata.siteUrl}${slug}twitter-card.jpg`,
+          name: "twitter:card",
+          content: imageUrl ? "summary_large_image" : `summary`,
         },
+        imageUrl
+          ? { property: `og:image`, content: imageUrl }
+          : {
+              name: "twitter:image",
+              content: `${site.siteMetadata.siteUrl}${slug}twitter-card.jpg`,
+            },
       ]
         .concat(
           keywords.length > 0
@@ -91,14 +111,6 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO
