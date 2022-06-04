@@ -14,7 +14,7 @@
     "gatsby-plugin-addsocialshare-share": "^1.0.0",
     "gatsby-plugin-feed": "^4.15.1",
     "gatsby-plugin-google-analytics": "^4.12.1",
-    "gatsby-plugin-manifest": "^4.10.0",
+    "gatsby-plugin-manifest": "^4.15.1",
     "gatsby-plugin-offline": "^5.15.1",
     "gatsby-plugin-react-helmet": "^5.10.0",
     "gatsby-plugin-sharp": "^4.15.0",
