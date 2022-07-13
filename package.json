@@ -8,7 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "gatsby": "^4.17.2",
+    "gatsby": "^4.18.1",
     "gatsby-cli": "^4.7.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-addsocialshare-share": "^1.0.1",
