@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "gatsby": "^4.17.2",
-    "gatsby-cli": "^4.7.0",
+    "gatsby-cli": "^4.20.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-addsocialshare-share": "^1.0.1",
     "gatsby-plugin-feed": "^4.17.0",
