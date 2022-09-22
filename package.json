@@ -22,7 +22,7 @@
     "gatsby-plugin-typescript": "^4.15.0",
     "gatsby-plugin-typography": "^4.23.0",
     "gatsby-remark-copy-linked-files": "^5.23.0",
-    "gatsby-remark-images": "^6.23.0",
+    "gatsby-remark-images": "^6.23.1",
     "gatsby-remark-prismjs": "^6.23.0",
     "gatsby-remark-responsive-iframe": "^5.23.0",
     "gatsby-remark-smartypants": "^5.23.0",
