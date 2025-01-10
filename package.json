@@ -50,7 +50,7 @@
     "tslint-loader": "^3.5.4",
     "tslint-plugin-prettier": "github:react-native-community/async-storage",
     "tslint-react": "^5.0.0",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
