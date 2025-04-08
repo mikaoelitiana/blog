@@ -97,6 +97,9 @@ export const pageQuery = graphql`
             fixed(height: 600, width: 1200) {
               src
             }
+            fluid(maxWidth: 700, maxHeight: 500) {
+              ...GatsbyImageSharpFluid
+            }
           }
         }
       }
