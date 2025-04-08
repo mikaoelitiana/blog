@@ -80,7 +80,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
@@ -138,17 +138,6 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-addsocialshare-share`,
-      options: {
-        id: ".ass_interface",
-        alignment_desktop: "right",
-        alignment_mobile: "bottom",
-        providers:
-          '{ facebook: "Facebook", linkedin: "Linkedin", twitter: "Twitter" }',
-        corners: "5%",
       },
     },
   ],
