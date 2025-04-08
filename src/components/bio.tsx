@@ -15,7 +15,7 @@ function Bio() {
   return (
     <StaticQuery
       query={bioQuery}
-      render={data => {
+      render={(data) => {
         const { author, social } = data.site.siteMetadata
         return (
           <div
@@ -57,7 +57,8 @@ const bioQuery = graphql`
     avatar: file(absolutePath: { regex: "/mikaoelitiana.png/" }) {
       childImageSharp {
         fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
+          src
+          srcSet
         }
       }
     }
