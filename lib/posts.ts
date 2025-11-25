@@ -17,6 +17,34 @@ export interface PostData {
   contentHtml?: string;
 }
 
+/**
+ * Generate excerpt from markdown content if not already provided
+ * @param excerptFromFrontmatter - Excerpt from frontmatter (may be empty)
+ * @param content - The markdown content to generate excerpt from
+ * @returns Generated excerpt or the provided one
+ */
+function generateExcerpt(excerptFromFrontmatter: string | undefined, content: string): string {
+  // Use provided excerpt if it exists and is not empty
+  if (excerptFromFrontmatter && excerptFromFrontmatter.trim() !== '') {
+    return excerptFromFrontmatter;
+  }
+
+  // Remove markdown formatting and get first paragraph or 160 characters
+  const cleanContent = content
+    .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+    .replace(/`[^`]*`/g, '') // Remove inline code
+    .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // Remove links but keep text
+    .replace(/[#*_~]/g, '') // Remove markdown formatting
+    .trim();
+  
+  // Get first paragraph or first 160 characters
+  const firstParagraph = cleanContent.split('\n\n')[0];
+  return firstParagraph.length > 160 
+    ? firstParagraph.substring(0, 160).trim() + '...' 
+    : firstParagraph;
+}
+
 export function getSortedPostsData(): PostData[] {
   // Get all directories in content/blog
   const postDirs = fs.readdirSync(postsDirectory);
@@ -40,13 +68,16 @@ export function getSortedPostsData(): PostData[] {
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents);
 
+      // Generate excerpt from content if not provided
+      const excerpt = generateExcerpt(matterResult.data.excerpt, matterResult.content);
+
       // Combine the data with the slug
       return {
         slug: dir,
         title: matterResult.data.title || dir,
         date: matterResult.data.date || new Date().toISOString(),
-        description: matterResult.data.description || matterResult.data.excerpt,
-        excerpt: matterResult.data.excerpt,
+        description: matterResult.data.description || excerpt,
+        excerpt: excerpt,
         lang: matterResult.data.lang || 'fr',
         author: matterResult.data.author,
       } as PostData;
@@ -92,6 +123,9 @@ export async function getPostData(slug: string): Promise<PostData> {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
+  // Generate excerpt from content if not provided
+  const excerpt = generateExcerpt(matterResult.data.excerpt, matterResult.content);
+
   // Use remark to convert markdown into HTML string
   // Note: sanitize is false because all content is trusted (author-controlled markdown files)
   // not user-generated content
@@ -118,8 +152,8 @@ export async function getPostData(slug: string): Promise<PostData> {
     contentHtml,
     title: matterResult.data.title || slug,
     date: matterResult.data.date || new Date().toISOString(),
-    description: matterResult.data.description || matterResult.data.excerpt,
-    excerpt: matterResult.data.excerpt,
+    description: matterResult.data.description || excerpt,
+    excerpt: excerpt,
     lang: matterResult.data.lang || 'fr',
     author: matterResult.data.author,
   };
