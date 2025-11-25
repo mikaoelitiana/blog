@@ -73,9 +73,7 @@ export function copyBlogImages(): void {
   });
 }
 
-// Run this script if executed directly
-if (require.main === module) {
-  console.log('Copying blog images to public directory...');
-  copyBlogImages();
-  console.log('Done!');
-}
+// Run the script
+console.log('Copying blog images to public directory...');
+copyBlogImages();
+console.log('Done!');

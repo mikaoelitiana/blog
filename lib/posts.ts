@@ -108,8 +108,8 @@ export async function getPostData(slug: string): Promise<PostData> {
   );
   // Also fix href attributes in anchor tags that link to images
   contentHtml = contentHtml.replace(
-    /(<a[^>]+href=["'])\.\/([^"']+\.(jpg|jpeg|png|gif|webp|svg))(["'])/gi,
-    `$1/blog/${slug}/$2$4`
+    /(<a[^>]+href=["'])\.\/([^"']+\.(?:jpg|jpeg|png|gif|webp|svg))(["'])/gi,
+    `$1/blog/${slug}/$2$3`
   );
 
   // Combine the data with the slug
