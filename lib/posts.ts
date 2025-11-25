@@ -34,7 +34,7 @@ function generateExcerpt(excerptFromFrontmatter: string | undefined, content: st
     .replace(/```[\s\S]*?```/g, '') // Remove code blocks
     .replace(/`[^`]*`/g, '') // Remove inline code
     .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
-    .replace(/\[([^\]]*)\]\([^\)]*\)/g, '$1') // Remove links but keep text
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // Remove links but keep text
     .replace(/[#*_~]/g, '') // Remove markdown formatting
     .trim();
   
