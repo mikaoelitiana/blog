@@ -61,8 +61,7 @@ export default function RootLayout({
           </header>
           <main>{children}</main>
           <footer style={{ marginTop: '2.625rem' }}>
-            © {new Date().getFullYear()}, Built with{' '}
-            <a href="https://nextjs.org">Next.js</a>
+            © {new Date().getFullYear()} {siteMetadata.author}
           </footer>
         </div>
       </body>
