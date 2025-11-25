@@ -17,24 +17,32 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
     // Always show first page
     pages.push(1);
 
-    if (currentPage > 3) {
+    // Calculate the range of pages to show around current page
+    let startPage = Math.max(2, currentPage - 1);
+    let endPage = Math.min(totalPages - 1, currentPage + 1);
+
+    // Add left ellipsis if there's a gap after page 1
+    if (startPage > 2) {
       pages.push('...');
     }
 
-    // Show pages around current page
-    const startPage = Math.max(2, currentPage - 1);
-    const endPage = Math.min(totalPages - 1, currentPage + 1);
-
+    // Show pages around current page (excluding first and last which are always shown)
     for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
+      // Only add if not first or last page (they're handled separately)
+      if (i !== 1 && i !== totalPages) {
+        pages.push(i);
+      }
     }
 
-    if (currentPage < totalPages - 2) {
+    // Add right ellipsis if there's a gap before last page
+    if (endPage < totalPages - 1) {
       pages.push('...');
     }
 
     // Always show last page
-    pages.push(totalPages);
+    if (totalPages > 1) {
+      pages.push(totalPages);
+    }
   } else {
     // Show all pages if 7 or fewer
     for (let i = 1; i <= totalPages; i++) {

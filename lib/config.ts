@@ -8,3 +8,5 @@ export const siteMetadata = {
     github: 'mikaoelitiana',
   },
 };
+
+export const POSTS_PER_PAGE = 20;

@@ -20,7 +20,7 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
-  const { posts, totalPages, currentPage } = getPaginatedPosts(page, 20);
+  const { posts, totalPages, currentPage } = getPaginatedPosts(page);
 
   // If page number is greater than total pages, show 404
   if (page > totalPages) {
@@ -63,7 +63,7 @@ export default async function Page({ params }: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const { totalPages } = getPaginatedPosts(1, 20);
+  const { totalPages } = getPaginatedPosts();
   const pages = [];
 
   for (let i = 2; i <= totalPages; i++) {

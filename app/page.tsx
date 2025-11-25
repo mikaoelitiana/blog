@@ -5,7 +5,7 @@ import Pagination from '@/components/Pagination';
 import { format } from 'date-fns';
 
 export default function Home() {
-  const { posts, totalPages, currentPage } = getPaginatedPosts(1, 20);
+  const { posts, totalPages, currentPage } = getPaginatedPosts();
 
   return (
     <>

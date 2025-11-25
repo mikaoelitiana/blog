@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { POSTS_PER_PAGE } from './config';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -99,7 +100,7 @@ export function getSortedPostsData(): PostData[] {
   });
 }
 
-export function getPaginatedPosts(page: number = 1, postsPerPage: number = 20): PaginatedPosts {
+export function getPaginatedPosts(page: number = 1, postsPerPage: number = POSTS_PER_PAGE): PaginatedPosts {
   const allPosts = getSortedPostsData();
   const totalPosts = allPosts.length;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
