@@ -73,7 +73,12 @@ export function copyBlogImages(): void {
   });
 }
 
-// Run the script
-console.log('Copying blog images to public directory...');
-copyBlogImages();
-console.log('Done!');
+// Run the script with error handling
+try {
+  console.log('Copying blog images to public directory...');
+  copyBlogImages();
+  console.log('Done!');
+} catch (error) {
+  console.error('Error copying blog images:', error);
+  process.exit(1);
+}
