@@ -40,13 +40,32 @@ export function getSortedPostsData(): PostData[] {
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents);
 
+      // Generate excerpt from content if not provided
+      let excerpt = matterResult.data.excerpt;
+      if (!excerpt || excerpt.trim() === '') {
+        // Remove markdown formatting and get first paragraph or 160 characters
+        const content = matterResult.content
+          .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+          .replace(/`[^`]*`/g, '') // Remove inline code
+          .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+          .replace(/\[([^\]]*)\]\([^\)]*\)/g, '$1') // Remove links but keep text
+          .replace(/[#*_~]/g, '') // Remove markdown formatting
+          .trim();
+        
+        // Get first paragraph or first 160 characters
+        const firstParagraph = content.split('\n\n')[0];
+        excerpt = firstParagraph.length > 160 
+          ? firstParagraph.substring(0, 160).trim() + '...' 
+          : firstParagraph;
+      }
+
       // Combine the data with the slug
       return {
         slug: dir,
         title: matterResult.data.title || dir,
         date: matterResult.data.date || new Date().toISOString(),
-        description: matterResult.data.description || matterResult.data.excerpt,
-        excerpt: matterResult.data.excerpt,
+        description: matterResult.data.description || excerpt,
+        excerpt: excerpt,
         lang: matterResult.data.lang || 'fr',
         author: matterResult.data.author,
       } as PostData;
@@ -92,6 +111,25 @@ export async function getPostData(slug: string): Promise<PostData> {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
+  // Generate excerpt from content if not provided
+  let excerpt = matterResult.data.excerpt;
+  if (!excerpt || excerpt.trim() === '') {
+    // Remove markdown formatting and get first paragraph or 160 characters
+    const content = matterResult.content
+      .replace(/```[\s\S]*?```/g, '') // Remove code blocks
+      .replace(/`[^`]*`/g, '') // Remove inline code
+      .replace(/!\[.*?\]\(.*?\)/g, '') // Remove images
+      .replace(/\[([^\]]*)\]\([^\)]*\)/g, '$1') // Remove links but keep text
+      .replace(/[#*_~]/g, '') // Remove markdown formatting
+      .trim();
+    
+    // Get first paragraph or first 160 characters
+    const firstParagraph = content.split('\n\n')[0];
+    excerpt = firstParagraph.length > 160 
+      ? firstParagraph.substring(0, 160).trim() + '...' 
+      : firstParagraph;
+  }
+
   // Use remark to convert markdown into HTML string
   // Note: sanitize is false because all content is trusted (author-controlled markdown files)
   // not user-generated content
@@ -106,8 +144,8 @@ export async function getPostData(slug: string): Promise<PostData> {
     contentHtml,
     title: matterResult.data.title || slug,
     date: matterResult.data.date || new Date().toISOString(),
-    description: matterResult.data.description || matterResult.data.excerpt,
-    excerpt: matterResult.data.excerpt,
+    description: matterResult.data.description || excerpt,
+    excerpt: excerpt,
     lang: matterResult.data.lang || 'fr',
     author: matterResult.data.author,
   };
