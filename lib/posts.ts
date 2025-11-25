@@ -45,6 +45,13 @@ function generateExcerpt(excerptFromFrontmatter: string | undefined, content: st
     : firstParagraph;
 }
 
+export interface PaginatedPosts {
+  posts: PostData[];
+  totalPages: number;
+  currentPage: number;
+  totalPosts: number;
+}
+
 export function getSortedPostsData(): PostData[] {
   // Get all directories in content/blog
   const postDirs = fs.readdirSync(postsDirectory);
@@ -90,6 +97,29 @@ export function getSortedPostsData(): PostData[] {
     const dateB = new Date(b.date);
     return dateB.getTime() - dateA.getTime();
   });
+}
+
+export function getPaginatedPosts(page: number = 1, postsPerPage: number = 20): PaginatedPosts {
+  const allPosts = getSortedPostsData();
+  const totalPosts = allPosts.length;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+  
+  // Ensure page is within valid range
+  const currentPage = Math.max(1, Math.min(page, totalPages));
+  
+  // Calculate start and end indices
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  
+  // Get posts for current page
+  const posts = allPosts.slice(startIndex, endIndex);
+  
+  return {
+    posts,
+    totalPages,
+    currentPage,
+    totalPosts,
+  };
 }
 
 export function getAllPostSlugs() {
