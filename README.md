@@ -1,57 +1,137 @@
+# Next.js Blog
+
+A personal blog built with Next.js 15, TypeScript, and Markdown.
+
 ## 🚀 Quick start
 
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+1.  **Install dependencies**
 
     ```sh
-    gatsby develop
+    npm install
     ```
 
-1.  **Open the source code and start editing!**
+2.  **Start developing**
 
-    Your site is now running at `http://localhost:8000`!
+    Navigate into your site's directory and start it up.
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+    ```sh
+    npm run dev
+    ```
+
+3.  **Open the source code and start editing!**
+
+    Your site is now running at `http://localhost:3000`!
+
+## 📝 Features
+
+- ✅ Next.js 15 with App Router
+- ✅ TypeScript support
+- ✅ Static Site Generation (SSG)
+- ✅ Markdown blog posts
+- ✅ Syntax highlighting with Prism
+- ✅ SEO optimized with metadata
+- ✅ Responsive design
 
 ## 🧐 What's inside?
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+A quick look at the top-level files and directories in this Next.js project.
 
     .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+    ├── app/                 # Next.js App Router pages
+    ├── components/          # React components
+    ├── content/            # Blog posts and assets
+    ├── lib/                # Utility functions
+    ├── out/                # Static export output (after build)
+    ├── public/             # Static files
+    ├── .eslintrc.json      # ESLint configuration
+    ├── .gitignore          # Git ignore rules
+    ├── next.config.ts      # Next.js configuration
+    ├── package.json        # Dependencies and scripts
+    ├── tsconfig.json       # TypeScript configuration
+    └── README.md           # This file
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+## 📦 Scripts
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production (static export)
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
+- `npm run format` - Format code with Prettier
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+## 🔧 Building and Deploying
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+This project is configured for static site generation. To build:
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+```sh
+npm run build
+```
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+The static files will be in the `out` directory, ready to deploy to any static hosting service.
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+## 🎨 Customization
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+### Site Metadata
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+Edit `lib/config.ts` to update site metadata:
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+```typescript
+export const siteMetadata = {
+  title: 'Your Name',
+  author: '@yourusername',
+  description: 'Your site description',
+  siteUrl: 'https://yoursite.com',
+  social: {
+    twitter: 'yourusername',
+    github: 'yourusername',
+  },
+};
+```
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+### Styling
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+Global styles are in `app/globals.css`. The design is inspired by the Typography.js WordPress 2016 theme.
+
+## 📝 Adding Blog Posts
+
+Blog posts are stored in `content/blog/`. Each post is in its own directory with an `index.md` file:
+
+```
+content/blog/
+├── my-first-post/
+│   ├── index.md
+│   └── image.png
+└── another-post/
+    └── index.md
+```
+
+### Frontmatter
+
+Each post should include frontmatter:
+
+```markdown
+---
+title: "My Blog Post"
+date: 2024-01-01
+description: "A brief description"
+lang: fr
+author: yourusername
+---
+
+Your content here...
+```
+
+## 🚢 Migration from Gatsby
+
+This project was migrated from Gatsby to Next.js for better tooling and ecosystem support. The migration includes:
+
+- ✅ App Router with TypeScript
+- ✅ Static Site Generation
+- ✅ Markdown processing with remark
+- ✅ Image optimization with next/image
+- ✅ SEO metadata
+- ✅ All existing blog posts preserved
+
+## 📄 License
+
+MIT

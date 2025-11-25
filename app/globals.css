@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: Merriweather, Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.75rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-top: 2.625rem;
+  margin-bottom: 1.3125rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  line-height: 2.625rem;
+}
+
+h3 {
+  font-size: 1.31951rem;
+  line-height: 1.75rem;
+}
+
+a {
+  color: #007acc;
+  text-decoration: none;
+  box-shadow: 0 1px 0 0 currentColor;
+}
+
+a:hover,
+a:active {
+  box-shadow: none;
+}
+
+blockquote {
+  margin-left: -1.3125rem;
+  margin-right: 1.75rem;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-left: 1.09375rem;
+  padding-right: 0;
+  padding-top: 0;
+  margin-bottom: 1.75rem;
+  font-size: 1.20112rem;
+  line-height: 1.75rem;
+  color: rgba(0, 0, 0, 0.59);
+  font-style: italic;
+  border-left: 0.21875rem solid rgba(0, 0, 0, 0.13);
+}
+
+pre {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+  overflow: auto;
+  word-wrap: normal;
+  padding: 1.75rem;
+  margin: 0 0 1.75rem;
+  font-size: 0.85rem;
+  line-height: 1.42;
+}
+
+code {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+  font-family: 'SFMono-Regular', Consolas, 'Roboto Mono', 'Droid Sans Mono',
+    'Liberation Mono', Menlo, Courier, monospace;
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  height: 1px;
+  margin: 0 0 calc(1.75rem - 1px);
+}
+
+ul,
+ol {
+  margin-left: 1.75rem;
+  margin-bottom: 1.75rem;
+  list-style-position: outside;
+  list-style-image: none;
+}
