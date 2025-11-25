@@ -11,31 +11,32 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx lib/copy-blog-images.ts && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
+    "gray-matter": "^4.0.3",
     "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "gray-matter": "^4.0.3",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "remark-prism": "^1.3.6",
-    "date-fns": "^4.1.0",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
-    "typescript": "^5.7.2",
     "eslint": "^9.16.0",
     "eslint-config-next": "^15.1.0",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.7.2"
   },
   "keywords": [
     "nextjs",
