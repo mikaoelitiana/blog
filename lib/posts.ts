@@ -81,12 +81,20 @@ export function getAllPostSlugs() {
 
 export async function getPostData(slug: string): Promise<PostData> {
   const fullPath = path.join(postsDirectory, slug, 'index.md');
+  
+  // Check if file exists before reading
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Post not found: ${slug}`);
+  }
+  
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string
+  // Note: sanitize is false because all content is trusted (author-controlled markdown files)
+  // not user-generated content
   const processedContent = await remark()
     .use(html, { sanitize: false })
     .process(matterResult.content);
