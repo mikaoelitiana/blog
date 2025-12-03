@@ -13,14 +13,14 @@
     "dev": "next dev",
     "build": "tsx lib/copy-blog-images.ts && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
-    "next": "^15.1.0",
+    "next": "^16.0.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark": "^15.0.1",
@@ -33,7 +33,7 @@
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.16.0",
-    "eslint-config-next": "^15.1.0",
+    "eslint-config-next": "^16.0.7",
     "prettier": "^3.4.2",
     "tsx": "^4.20.6",
     "typescript": "^5.7.2"
