@@ -13,7 +13,7 @@
     "dev": "next dev",
     "build": "tsx lib/copy-blog-images.ts && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx}\"",
     "type-check": "tsc --noEmit"
   },
