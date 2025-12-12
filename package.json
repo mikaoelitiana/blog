@@ -20,7 +20,7 @@
   "dependencies": {
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
-    "next": "^16.0.9",
+    "next": "^16.0.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remark": "^15.0.1",
