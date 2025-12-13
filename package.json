@@ -35,7 +35,7 @@
     "eslint": "^9.16.0",
     "eslint-config-next": "^16.0.7",
     "prettier": "^3.4.2",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.2"
   },
   "keywords": [
