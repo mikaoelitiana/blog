@@ -29,7 +29,7 @@
     "sharp": "^0.35.2"
   },
   "devDependencies": {
-    "@types/node": "^26.0.0",
+    "@types/node": "^26.0.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.0.2",
     "eslint": "^10.5.0",
